@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import db from "./config/connection.js";
 import usersRouter from "./routes/users.js";
-import notesRouter from "./routes/notes.js";
+import router from "./routes/notes.js";
 
 dotenv.config();
 
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/users", usersRouter);
-app.use("/api/notes", notesRouter);
+app.use("/api/notes", router);
 
 db.once("open", () => {
   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
