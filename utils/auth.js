@@ -4,7 +4,7 @@ const secret = process.env.JWT_SECRET;
 const expiration = "2h";
 
 export function authMiddleware(req, res, next) {
-  let token = req.body.token || req.query.token || req.headers.authorization;
+  let token = req.body?.token || req.query?.token || req.headers.authorization;
 
   if (req.headers.authorization) {
     token = token.split(" ").pop().trim();
